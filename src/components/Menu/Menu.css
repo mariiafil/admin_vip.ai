@@ -1,0 +1,12 @@
+.nav-item .nav-link,
+.nav-item .nav-link-icon {
+  color: #fff;
+}
+
+.nav-item:hover {
+  background-color: black;
+}
+
+.nav-item-active {
+  background-color: black;
+}
