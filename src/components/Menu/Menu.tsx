@@ -9,7 +9,7 @@ import { ReportsIcon } from '../../icons/ReportsIcon';
 import { PaymentIcon } from '../../icons/PaymentIcon';
 import { UserIcon } from '../../icons/UsersIcon';
 import { SettingsIcon } from '../../icons/SettingsIcon';
-import './Menu.css';
+import './menu.css';
 
 export const Menu: FC = () => {
   return (
