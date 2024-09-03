@@ -3,7 +3,7 @@
 To run a project follow steps:
 
 - clone repository
-  `git clone ... `
+  `git clone https://github.com/mariiafil/admin_vip.ai.git`
 - npm install
 - npm start
 
