@@ -1,18 +1,11 @@
 import { FC, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { routes } from './routes/commonRoutes';
-import { DashboardLayout } from './layouts';
+import { routes } from './commonRoutes';
+import { DashboardLayout } from '../layouts';
 
 export const App: FC = () => {
   return (
-    <Suspense
-      fallback={
-        <span
-          className="spinner-border text-blue"
-          role="status"
-        ></span>
-      }
-    >
+    <Suspense fallback={<div>loading TODO</div>}>
       <Routes>
         {routes.map((route, index) => (
           <Route
