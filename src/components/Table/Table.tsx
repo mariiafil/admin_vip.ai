@@ -2,6 +2,7 @@ import { ChangeEvent, FC } from 'react';
 import { ArrorNextIcon } from '../../icons/ArrorNextIcon';
 import { ArrorPrevIcon } from '../../icons/ArrorPrevIcon';
 import { TableProps } from './Table.types';
+import { SelectControl } from '../SelectControl/SelectControl';
 
 export const Table: FC<TableProps> = ({
   cols,
@@ -9,12 +10,14 @@ export const Table: FC<TableProps> = ({
   currentPage,
   totalPages,
   itemsPerPage,
+  totalElements,
   handleSetPageSize,
   handleSetCurrentPage,
 }) => {
   const paginationArr: number[] | undefined[] = Array(totalPages).fill(1);
-  const onPageSizeChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onPageSizeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     handleSetPageSize(Number(e.target.value));
+    handleSetCurrentPage(1);
   };
 
   const onPageSet = (num: number) => () => {
@@ -51,13 +54,27 @@ export const Table: FC<TableProps> = ({
         </div>
         <div className="card-footer d-flex align-items-center bg-black">
           <div className="text-white">
-            <div className="mx-2 d-inline-block">
-              <input
-                type="text"
-                className="form-control form-control-sm text-black"
+            <div className="mx-2 d-flex align-items-center gap-3 flex-wrap">
+              <span>
+                {`Showing ${currentPage * itemsPerPage - itemsPerPage + 1} to ${currentPage * itemsPerPage} of ${totalElements}`}
+              </span>
+              <SelectControl
                 value={itemsPerPage}
-                size={3}
                 onChange={onPageSizeChange}
+                options={[
+                  {
+                    title: '10',
+                    value: 10,
+                  },
+                  {
+                    title: '15',
+                    value: 15,
+                  },
+                  {
+                    title: '20',
+                    value: 20,
+                  },
+                ]}
               />
             </div>
           </div>
@@ -73,7 +90,10 @@ export const Table: FC<TableProps> = ({
               </button>
             </li>
             {paginationArr.map((_item, index) => (
-              <li className="page-item">
+              <li
+                className="page-item"
+                key={index}
+              >
                 <button
                   className={`page-link ${index + 1 === currentPage ? 'active' : ''}`}
                   onClick={onPageSet(index + 1)}

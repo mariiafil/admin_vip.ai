@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
-import { Select, Table } from '../../components';
+import { SelectControl, Table } from '../../components';
 import { dataApi } from '../../store/data';
 import { useParams } from 'react-router-dom';
 import { SearchIcon } from '../../icons/SearchIcon';
@@ -98,16 +98,40 @@ const BusinessDetails: FC = () => {
         </div>
       </div>
       <div className="d-flex mb-4 gap-2">
-        <Select option="Category" />
-        <Select option="Subcategory" />
-        <Select option="Status" />
-        <Select option="Country" />
-        <Select option="City" />
-        <Select option="Date registered" />
-
+        <SelectControl
+          options={[{ title: 'Category', value: 'Category' }]}
+          onChange={console.log}
+          value="Category"
+        />
+        <SelectControl
+          options={[{ title: 'Subcategory', value: 'Subcategory' }]}
+          onChange={console.log}
+          value="Subcategory"
+        />
+        <SelectControl
+          options={[{ title: 'Status', value: 'Status' }]}
+          onChange={console.log}
+          value="Status"
+        />
+        <SelectControl
+          options={[{ title: 'Country', value: 'Country' }]}
+          onChange={console.log}
+          value="Country"
+        />
+        <SelectControl
+          options={[{ title: 'City', value: 'City' }]}
+          onChange={console.log}
+          value="City"
+        />
+        <SelectControl
+          options={[{ title: 'Date registered', value: 'Date registered' }]}
+          onChange={console.log}
+          value="Date registered"
+        />
         <button className="btn btn-outline-light border-0">Clear all</button>
       </div>
       <Table
+        totalElements={stores?.data?.[0] ?? 0}
         cols={['Company', 'Category', 'Group', 'Subcategory', 'City/Country', 'Date Registered']}
         currentPage={currentPage}
         itemsPerPage={pageSize}
