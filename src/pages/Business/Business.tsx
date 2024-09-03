@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { dataApi } from '../../store/data';
 import { AppRouteEnum } from '../../types';
 import { Modal } from '../../components';
@@ -9,7 +9,7 @@ const Business: FC = () => {
   const [getCategories, categories] = dataApi.useLazyGetCategoriesQuery();
   const [loading, setLoading] = useState(false);
 
-  const handleGetCategories = async () => {
+  const handleGetCategories = useCallback(async () => {
     try {
       setLoading(true);
       await getCategories(null);
@@ -18,7 +18,7 @@ const Business: FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [getCategories, setLoading]);
 
   useEffect(() => {
     handleGetCategories();

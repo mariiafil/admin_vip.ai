@@ -51,7 +51,6 @@ export const Table: FC<TableProps> = ({
         </div>
         <div className="card-footer d-flex align-items-center bg-black">
           <div className="text-white">
-            Show
             <div className="mx-2 d-inline-block">
               <input
                 type="text"
@@ -61,9 +60,8 @@ export const Table: FC<TableProps> = ({
                 onChange={onPageSizeChange}
               />
             </div>
-            entries
           </div>
-          <ul className="pagination m-0 ms-auto">
+          <ul className="pagination m-0 ms-auto flex-wrap">
             <li className={`page-item ${currentPage === 1}`}>
               <button
                 className="page-link"

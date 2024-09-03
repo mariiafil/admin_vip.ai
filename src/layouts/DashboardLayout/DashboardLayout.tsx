@@ -7,7 +7,7 @@ export const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
       <aside className="border-secondary border-end navbar navbar-vertical navbar-expand-sm bg-dark-custom">
         <Menu />
       </aside>
-      <div className="page-wrapper min-vh-100 px-4">{children}</div>
+      <div className="page-wrapper min-vh-100 px-4 pb-4">{children}</div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
 import { Select, Table } from '../../components';
 import { dataApi } from '../../store/data';
@@ -12,20 +12,47 @@ const BusinessDetails: FC = () => {
   const [pageSize, setPageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(0);
 
-  const handleSetPageSize = (num: number) => {
-    if (num > 0 && num <= 100) {
-      setPageSize(num);
-    }
-  };
+  const handleSetPageSize = useCallback(
+    (num: number) => {
+      if (num > 0 && num <= 100) {
+        setPageSize(num);
+      }
+    },
+    [setPageSize]
+  );
 
-  const handleSetcurrentPage = (page: number) => {
-    if (page > 0 && page <= totalPages) {
-      setCurrentPage(page);
+  const handleSetcurrentPage = useCallback(
+    (page: number) => {
+      if (page > 0 && page <= totalPages) {
+        setCurrentPage(page);
+      }
+    },
+    [setCurrentPage, totalPages]
+  );
+
+  const handleGetStores = useCallback(async () => {
+    if (!id) {
+      return;
     }
-  };
+
+    try {
+      const data = await getStores({
+        page: currentPage,
+        page_size: pageSize,
+        id,
+      });
+
+      if (data?.data?.[0] && typeof data?.data?.[0] === 'number') {
+        setTotalPages(Math.ceil(data?.data?.[0] / pageSize));
+      }
+    } catch (e) {
+      console.error('COULD NOT GET STORES', e);
+    }
+  }, [setTotalPages, currentPage, getStores, id, pageSize]);
 
   const tableValues = useMemo(() => {
     const dataIsArray = Array.isArray(stores?.data?.[1]);
+
     if (!dataIsArray) {
       return [];
     }
@@ -44,26 +71,6 @@ const BusinessDetails: FC = () => {
       '21.09.2022',
     ]);
   }, [stores]);
-
-  const handleGetStores = async () => {
-    if (!id) {
-      return;
-    }
-
-    try {
-      const data = await getStores({
-        page: currentPage,
-        page_size: pageSize,
-        id,
-      });
-
-      if (data?.data?.[0] && typeof data?.data?.[0] === 'number') {
-        setTotalPages(Math.ceil(data?.data?.[0] / pageSize));
-      }
-    } catch (e) {
-      console.error('COULD NOT GET STORES', e);
-    }
-  };
 
   useEffect(() => {
     handleGetStores();

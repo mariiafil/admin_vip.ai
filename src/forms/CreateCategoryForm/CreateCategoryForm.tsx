@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,14 +12,6 @@ const schema = yup
   })
   .required();
 
-const handleCreateCategory = async (createCategory: CreateCategoryTrigger, name: string) => {
-  try {
-    await createCategory({ name });
-  } catch (e) {
-    console.error('Could not create category', e);
-  }
-};
-
 export const CreateCategoryForm: FC = () => {
   const {
     register,
@@ -32,13 +24,26 @@ export const CreateCategoryForm: FC = () => {
 
   const [createCategory] = dataApi.useCreateCategoryMutation();
 
-  const onSubmit = async (data: { category: string }) => {
-    await handleCreateCategory(createCategory, data.category);
-    reset();
+  const handleCreateCategory = useCallback(
+    async (createCategory: CreateCategoryTrigger, name: string) => {
+      try {
+        await createCategory({ name });
+      } catch (e) {
+        console.error('Could not create category', e);
+      }
+    },
+    []
+  );
+  const onSubmit = useCallback(
+    async (data: { category: string }) => {
+      await handleCreateCategory(createCategory, data.category);
+      reset();
 
-    const closeBtn = document.getElementById('close-btn') as HTMLButtonElement;
-    closeBtn.click();
-  };
+      const closeBtn = document.getElementById('close-btn') as HTMLButtonElement;
+      closeBtn.click();
+    },
+    [reset, createCategory]
+  );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

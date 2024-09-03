@@ -3,12 +3,6 @@ import { ModalProps } from './Modal.types';
 
 export const Modal: FC<PropsWithChildren<ModalProps>> = ({ title, children }) => {
   return (
-    // <button
-    //   type="button"
-    //   className="btn me-auto"
-    //   data-bs-dismiss="modal"
-    // >
-
     <div
       className="modal"
       id="modal"

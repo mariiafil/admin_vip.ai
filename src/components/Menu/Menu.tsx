@@ -3,13 +3,13 @@ import { DashboardIcon } from '../../icons/DashboardIcon';
 import { BusinessIcon } from '../../icons/BusinessIcon';
 import { AppRouteEnum } from '../../types';
 import { MenuItem } from './MenuItem/MenuItem';
-import './Menu.css';
 import { AnalyticsIcon } from '../../icons/AnalyticsIcon';
 import { RefundsIcon } from '../../icons/RefundsIcon';
 import { ReportsIcon } from '../../icons/ReportsIcon';
 import { PaymentIcon } from '../../icons/PaymentIcon';
 import { UserIcon } from '../../icons/UsersIcon';
 import { SettingsIcon } from '../../icons/SettingsIcon';
+import './Menu.css';
 
 export const Menu: FC = () => {
   return (
