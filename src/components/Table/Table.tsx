@@ -49,7 +49,7 @@ export const Table: FC<TableProps> = ({
             </tbody>
           </table>
         </div>
-        <div className="card-footer d-flex align-items-center bg-dark">
+        <div className="card-footer d-flex align-items-center bg-black">
           <div className="text-white">
             Show
             <div className="mx-2 d-inline-block">

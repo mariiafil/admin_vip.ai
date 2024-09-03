@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { dataApi } from '../../store/data';
 import { AppRouteEnum } from '../../types';
 import { Modal } from '../../components';
@@ -7,12 +7,16 @@ import { PageTitle } from '../../components/PageTitle/PageTitle';
 
 const Business: FC = () => {
   const [getCategories, categories] = dataApi.useLazyGetCategoriesQuery();
+  const [loading, setLoading] = useState(false);
 
   const handleGetCategories = async () => {
     try {
+      setLoading(true);
       await getCategories(null);
     } catch (e) {
       console.error('COULD NOT GET CATEGORIES', e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -23,6 +27,12 @@ const Business: FC = () => {
   return (
     <div className="page">
       <PageTitle title="Categories" />
+      {loading && (
+        <div
+          className="spinner-border text-green mx-auto"
+          role="status"
+        ></div>
+      )}
       <div className="btn-group-vertical w-50 mx-auto">
         {categories?.data?.map((item) => (
           <a

@@ -1,8 +1,9 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
-import { Table } from '../../components';
+import { Select, Table } from '../../components';
 import { dataApi } from '../../store/data';
 import { useParams } from 'react-router-dom';
+import { SearchIcon } from '../../icons/SearchIcon';
 
 const BusinessDetails: FC = () => {
   const { id } = useParams();
@@ -29,7 +30,13 @@ const BusinessDetails: FC = () => {
       return [];
     }
     return stores.data?.[1]?.map((store) => [
-      store?.name,
+      <div className="d-flex gap-3 align-items-center">
+        <span className="avatar bg-green-lt">{store?.name?.[0]}</span>
+        <div>
+          <p>{store?.name}</p>
+          <p>{store.id}</p>
+        </div>
+      </div>,
       'category',
       'group',
       'subcategory',
@@ -64,7 +71,35 @@ const BusinessDetails: FC = () => {
 
   return (
     <div className="page">
-      <PageTitle title="All business" />
+      <div className="d-flex justify-content-between align-items-center">
+        <PageTitle title="All business" />
+
+        <div className="d-flex justify-content-end align-items-center gap-2">
+          <div className="input-icon">
+            <input
+              type="text"
+              value=""
+              className="form-control form-control-rounded"
+              placeholder="Search…"
+            />
+            <span className="input-icon-addon">
+              <SearchIcon />
+            </span>
+          </div>
+          <button className="btn btn-outline-primary">Bulk upload</button>
+          <button className="btn btn-primary">Add business</button>
+        </div>
+      </div>
+      <div className="d-flex mb-4 gap-2">
+        <Select option="Category" />
+        <Select option="Subcategory" />
+        <Select option="Status" />
+        <Select option="Country" />
+        <Select option="City" />
+        <Select option="Date registered" />
+
+        <button className="btn btn-outline-light border-0">Clear all</button>
+      </div>
       <Table
         cols={['Company', 'Category', 'Group', 'Subcategory', 'City/Country', 'Date Registered']}
         currentPage={currentPage}
