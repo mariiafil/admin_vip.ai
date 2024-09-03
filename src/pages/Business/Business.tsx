@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
-
 import { dataApi } from '../../store/data';
 import { AppRouteEnum } from '../../types';
 import { Modal } from '../../components';
 import { CreateCategoryForm } from '../../forms';
+import { PageTitle } from '../../components/PageTitle/PageTitle';
 
 const Business: FC = () => {
   const [getCategories, categories] = dataApi.useLazyGetCategoriesQuery();
@@ -22,15 +22,7 @@ const Business: FC = () => {
 
   return (
     <div className="page">
-      <div className="page-header mb-5">
-        <div className="container-xl">
-          <div className="row g-2 align-items-center">
-            <div className="col">
-              <h2 className="page-title text-white">Categories</h2>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageTitle title="Categories" />
       <div className="btn-group-vertical w-50 mx-auto">
         {categories?.data?.map((item) => (
           <a

@@ -23,6 +23,16 @@ export const dataApi = createApi({
         }),
         invalidatesTags: ['Categories'],
       }),
+      getStores: build.query<
+        [number, { id: string; name: string; description: string }[]],
+        { id: string; page: number; page_size: number }
+      >({
+        query: ({ id, page, page_size }) => ({
+          url: `/stores/by_category/${id}`,
+          method: 'get',
+          params: { page, page_size },
+        }),
+      }),
     };
   },
 });
