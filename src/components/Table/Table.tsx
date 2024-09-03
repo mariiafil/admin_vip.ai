@@ -73,7 +73,10 @@ export const Table: FC<TableProps> = ({
               </button>
             </li>
             {paginationArr.map((_item, index) => (
-              <li className="page-item">
+              <li
+                className="page-item"
+                key={index}
+              >
                 <button
                   className={`page-link ${index + 1 === currentPage ? 'active' : ''}`}
                   onClick={onPageSet(index + 1)}

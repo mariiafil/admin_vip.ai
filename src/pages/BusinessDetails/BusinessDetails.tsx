@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
-import { Select, Table } from '../../components';
+import { SelectControl, Table } from '../../components';
 import { dataApi } from '../../store/data';
 import { useParams } from 'react-router-dom';
 import { SearchIcon } from '../../icons/SearchIcon';
@@ -98,12 +98,12 @@ const BusinessDetails: FC = () => {
         </div>
       </div>
       <div className="d-flex mb-4 gap-2">
-        <Select option="Category" />
-        <Select option="Subcategory" />
-        <Select option="Status" />
-        <Select option="Country" />
-        <Select option="City" />
-        <Select option="Date registered" />
+        <SelectControl option="Category" />
+        <SelectControl option="Subcategory" />
+        <SelectControl option="Status" />
+        <SelectControl option="Country" />
+        <SelectControl option="City" />
+        <SelectControl option="Date registered" />
 
         <button className="btn btn-outline-light border-0">Clear all</button>
       </div>

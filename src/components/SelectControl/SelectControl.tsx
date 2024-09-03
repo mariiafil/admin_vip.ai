@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import './select.css';
+import './selectControl.css';
 
-export const Select: FC<{ option: string }> = ({ option }) => {
+export const SelectControl: FC<{ option: string }> = ({ option }) => {
   return (
     <select className="form-select bg-black text-white custom-select border-secondary">
       <option value="1">{option}</option>
