@@ -10,16 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tabler/core": "^1.0.0-beta20",
-    "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@tabler/core": "^1.0.0-beta20",
+    "prettier": "^3.3.3",
+    "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/bootstrap": "^5.2.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -31,6 +33,7 @@
     "react-redux": "^9.1.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "yup": "^1.4.0"
   }
 }
