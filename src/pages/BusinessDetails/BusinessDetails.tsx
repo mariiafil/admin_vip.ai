@@ -64,11 +64,7 @@ const BusinessDetails: FC = () => {
           <p>{store.id}</p>
         </div>
       </div>,
-      'category',
-      'group',
-      'subcategory',
-      'city',
-      '21.09.2022',
+      store?.description ?? '**description**',
     ]);
   }, [stores]);
 
@@ -132,7 +128,7 @@ const BusinessDetails: FC = () => {
       </div>
       <Table
         totalElements={stores?.data?.[0] ?? 0}
-        cols={['Company', 'Category', 'Group', 'Subcategory', 'City/Country', 'Date Registered']}
+        cols={['Company', 'Description']}
         currentPage={currentPage}
         itemsPerPage={pageSize}
         totalPages={totalPages}
