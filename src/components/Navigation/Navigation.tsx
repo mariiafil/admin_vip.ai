@@ -9,9 +9,9 @@ import { ReportsIcon } from '../../icons/ReportsIcon';
 import { PaymentIcon } from '../../icons/PaymentIcon';
 import { UserIcon } from '../../icons/UsersIcon';
 import { SettingsIcon } from '../../icons/SettingsIcon';
-import './menu.css';
+import './navigation.css';
 
-export const Menu: FC = () => {
+export const Navigation: FC = () => {
   return (
     <div className="p-2 pt-3">
       <div className="d-flex px-3 align-items-center mb-3 gap-3">

@@ -78,7 +78,7 @@ const BusinessDetails: FC = () => {
 
   return (
     <div className="page">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center flex-wrap mb-4">
         <PageTitle title="All business" />
 
         <div className="d-flex justify-content-end align-items-center gap-2">
@@ -97,7 +97,7 @@ const BusinessDetails: FC = () => {
           <button className="btn btn-primary">Add business</button>
         </div>
       </div>
-      <div className="d-flex mb-4 gap-2">
+      <div className="d-flex mb-4 gap-2 flex-wrap">
         <SelectControl
           options={[{ title: 'Category', value: 'Category' }]}
           onChange={console.log}
