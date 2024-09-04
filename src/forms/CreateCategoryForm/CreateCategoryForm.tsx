@@ -54,7 +54,7 @@ export const CreateCategoryForm: FC = () => {
           type="text"
           className={`form-control ${errors.category ? 'is-invalid' : ''}`}
           placeholder="Enter category"
-          {...register('category', { required: true, maxLength: 20, minLength: 2 })}
+          {...register('category')}
         />
         {errors.category && (
           <div

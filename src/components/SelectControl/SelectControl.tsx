@@ -11,7 +11,12 @@ export const SelectControl: FC<SelectControlProps> = ({ options, onChange, value
     >
       {options.map((option) => (
         <>
-          <option value={option.value}>{option.title}</option>
+          <option
+            value={option.value}
+            key={option.value}
+          >
+            {option.title}
+          </option>
         </>
       ))}
     </select>
