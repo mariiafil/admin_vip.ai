@@ -4,7 +4,7 @@ import { ModalProps } from './Modal.types';
 export const Modal: FC<PropsWithChildren<ModalProps>> = ({ title, children }) => {
   return (
     <div
-      className="modal"
+      className="modal fade"
       id="modal"
       tabIndex={-1}
     >
