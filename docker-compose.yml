@@ -1,6 +1,12 @@
-version: '3.8'
+version: '3.4'
+
 services:
-  web:
-    build: .
+  sampleproject:
+    image: sampleproject
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
     ports:
-      - '8080:8080'
+      - 3000:3000

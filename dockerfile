@@ -1,28 +1,17 @@
-FROM node:20-alpine as BUILD_IMAGE
+FROM node:18-alpine
 
 WORKDIR /app
 
-COPY ./package.json .
+COPY package.json .
 
 RUN npm install
+
+RUN npm i -g serve
 
 COPY . .
 
 RUN npm run build
 
-FROM node:20-alpine as PRODUCTION_IMAGE
+EXPOSE 3000
 
-WORKDIR /app
-
-COPY --from=BUILD_IMAGE /app/dist/ /app/dist/
-
-EXPOSE 8080
-
-COPY package.json .
-COPY vite.config.ts .
-
-RUN npm install typescript
-
-EXPOSE 8080
-
-CMD ["npm", "run", "preview"]
+CMD [ "serve", "-s", "dist" ]
