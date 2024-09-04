@@ -34,6 +34,7 @@ export const CreateCategoryForm: FC = () => {
     },
     []
   );
+
   const onSubmit = useCallback(
     async (data: { category: string }) => {
       await handleCreateCategory(createCategory, data.category);

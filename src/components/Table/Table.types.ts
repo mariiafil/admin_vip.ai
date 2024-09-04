@@ -6,6 +6,7 @@ export type TableProps = {
   currentPage: number;
   totalPages: number;
   itemsPerPage: number;
+  totalElements: number;
   handleSetPageSize: (size: number) => void;
   handleSetCurrentPage: (page: number) => void;
 };
